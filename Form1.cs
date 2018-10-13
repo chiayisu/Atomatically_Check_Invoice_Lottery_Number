@@ -66,6 +66,25 @@ namespace ReceiptLotteryCheck
             textBox1.Clear();
         }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            date = new Date();
+            date.Year = textBox4.Text;
+            date.Month = textBox5.Text;
+            if (IsDateNull(date))
+            {
+                MessageBox.Show("請輸入日期。", "注意", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (!init(date))
+            {
+                MessageBox.Show("日期輸入錯誤，請確定輸入之日期已經開獎。", "注意", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            showPrizeNumber();
+        }
+
+
         bool IsDateNull(Date date)
         {
             if (date.Year == "" || date.Month == "")
@@ -229,6 +248,7 @@ namespace ReceiptLotteryCheck
                 return PrizeTypeReturnDefinition.sixPrize;
         }
 
+     
       
      
     }
